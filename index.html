@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+
+  <title>Digital Clock</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(to right, #03a9f4, #ff05d5);
+      overflow: hidden;
+    }
+
+    .timeDisplay {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/clock') no-repeat center center/cover;
+      border-radius: 10px;
+      width: 800px;
+      height: 250px;
+      padding: 150px;
+      margin: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Balsamiq Sans', cursive;
+      box-sizing: border-box;
+      box-shadow: 10px 10px 30px black;
+    }
+
+    h1 {
+
+      position: relative;
+      width: 400px;
+      height: 35px;
+      color: white;
+    }
+
+    .btn {
+      position: relative;
+      display: block;
+    }
+
+    .nav-link, .navbar-brand{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+
+  <!-- Navbar for the website to look a little attractive or reasonable -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="https://www.fossil.com/on/demandware.static/-/Library-Sites-FossilSharedLibrary/default/dwfd06b477/2019/FA19/top_nav_imgs/Collectors_Club_Logo_300x300.jpg" width="75" height="75" alt="" loading="lazy"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- List of elements to justify the navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Time Zone <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Co-Ordinates <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Container for the digital clock to apply some style -->
+  <div class="container my-4" id="backImage">
+    <div class="timeDisplay">
+      <h1 class="display">TIME-> <span id="time"></span></h1>
+
+      <a class="btn btn-outline-info my-2 my-sm-2" href="#" id="myBtn" role="button">Change Background</a>
+    </div>
+  </div>
+
+
+  <script>
+    // Function to display time
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      h = checkTime(h);
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('time').innerHTML =
+        h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+      if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+      return i;
+    }
+
+    // // Random background color
+    // const button = document.getElementById('myBtn');
+    // myBtn.addEventListener('click', () => {
+    //   document.body.style.backgroundColor = colors();
+    // });
+
+    // function colors() {
+    //   let colorArray = [];
+
+    //   for (let i = 0; i < 3; i++) {
+    //     colorArray.push(Math.floor(Math.random() * (255 - 0) + 0));
+    //   }
+    //   // rgb -> hex
+    //   let color = colorArray
+    //     .map(x => x.toString(16))
+    //     .join('');
+
+    //   return `#${color}`;
+    // }
+
+  </script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
